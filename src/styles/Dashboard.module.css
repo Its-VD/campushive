@@ -1,0 +1,245 @@
+.container {
+  min-height: 100vh;
+  background: var(--bg);
+  padding-bottom: 40px;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.logo span {
+  color: var(--primary);
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #000;
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.userName {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.userMeta {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.logoutBtn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+.logoutBtn:hover {
+  border-color: var(--error);
+  color: var(--error);
+}
+
+.banner {
+  margin: 32px;
+  background: linear-gradient(135deg, #1a1200, #2a1f00);
+  border: 1px solid #3d2e00;
+  border-radius: 16px;
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.banner h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.banner p {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.bannerBadge {
+  background: var(--primary);
+  color: #000;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 0 32px;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--card-color);
+  border-radius: 16px 16px 0 0;
+}
+
+.card:hover {
+  border-color: var(--card-color);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.cardIcon {
+  font-size: 36px;
+  margin-bottom: 16px;
+}
+
+.cardTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.cardDesc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.cardArrow {
+  position: absolute;
+  bottom: 20px;
+  right: 24px;
+  font-size: 20px;
+  color: var(--card-color);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.card:hover .cardArrow {
+  opacity: 1;
+}
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding: 0 32px;
+  margin-bottom: 32px;
+}
+
+.statCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+
+.statValue {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+.statLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.statDesc {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.sectionTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  padding: 0 32px;
+  margin-bottom: 16px;
+}
+
+.quickActions {
+  display: flex;
+  gap: 12px;
+  padding: 0 32px;
+  flex-wrap: wrap;
+}
+
+.qaBtn {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.qaBtn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+.statsRow {
+  margin-bottom: 32px; /* already hai */
+}

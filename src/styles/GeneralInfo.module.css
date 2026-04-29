@@ -1,0 +1,142 @@
+.container {
+  min-height: 100vh;
+  background: var(--bg);
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.back {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+.back:hover {
+  color: var(--text);
+}
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  padding: 20px 32px;
+  flex-wrap: wrap;
+}
+.filterBtn {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 7px 18px;
+  border-radius: 20px;
+  font-size: 13px;
+}
+.filterBtn:hover,
+.active {
+  background: var(--primary) !important;
+  color: #000 !important;
+  border-color: var(--primary) !important;
+  font-weight: 600;
+}
+
+.loading {
+  color: var(--text-muted);
+  padding: 40px 32px;
+}
+.empty {
+  color: var(--text-muted);
+  text-align: center;
+  padding: 60px;
+  font-size: 18px;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0 32px 40px;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--cat-color);
+  border-radius: 12px;
+  padding: 24px;
+  transition: border-color 0.2s;
+}
+.card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+.cardTop {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.pin {
+  font-size: 12px;
+  color: var(--primary);
+  font-weight: 600;
+}
+.cat {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.date {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-left: auto;
+}
+.cardTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.cardContent {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+.attachment {
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 500;
+}
+.attachment:hover {
+  text-decoration: underline;
+}
+.postedBy {
+  color: var(--text-muted);
+  font-size: 12px;
+  margin-top: 12px;
+}
+# Frontend
+cd ~/Desktop/campushive
+git init
+git add .
+git commit -m "feat: complete frontend - all pages done"
+git branch -M main
+git remote add origin https://github.com/TERA_USERNAME/campushive.git
+git push -u origin main
+
+# Backend
+cd ~/Desktop/campushive-backend
+git add .
+git commit -m "chore: minor updates"
+git push origin main
