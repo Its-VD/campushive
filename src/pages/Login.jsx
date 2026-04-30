@@ -19,10 +19,10 @@ export default function Login() {
     e.preventDefault();
     setError("");
 
-    // if (!form.email.endsWith("@nitkkr.ac.in")) {
-    //   setError("Sirf @nitkkr.ac.in email allowed hai");
-    //   return;
-    // }
+    if (!form.email.endsWith("@nitkkr.ac.in")) {
+      setError("Sirf @nitkkr.ac.in email allowed hai");
+      return;
+    }
 
     setLoading(true);
     try {
