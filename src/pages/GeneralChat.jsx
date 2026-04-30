@@ -5,7 +5,7 @@ import { getMessages, saveMessage, deleteMessage } from "../services/api";
 import { io } from "socket.io-client";
 import styles from "../styles/Chat.module.css";
 
-const socket = io("http://localhost:5001");
+const socket = io(import.meta.env.VITE_SOCKET_URL);
 
 export default function GeneralChat() {
   const { user, token } = useAuth();
