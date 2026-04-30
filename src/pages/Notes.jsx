@@ -1,7 +1,13 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { getNotes, uploadNote, deleteNote, likeNote } from "../services/api";
+import {
+  getNotes,
+  uploadNote,
+  deleteNote,
+  likeNote,
+  summarizeNote,
+} from "../services/api";
 import styles from "../styles/Notes.module.css";
 
 export default function Notes() {
@@ -20,6 +26,9 @@ export default function Notes() {
   });
   const [form, setForm] = useState({ title: "", description: "", subject: "" });
   const [file, setFile] = useState(null);
+  const [summary, setSummary] = useState(null);
+  const [summarizing, setSummarizing] = useState(false);
+  const [activeNoteId, setActiveNoteId] = useState(null);
 
   useEffect(() => {
     fetchNotes();
@@ -34,6 +43,22 @@ export default function Notes() {
       setError("Notes load nahi hue");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleSummarize = async (note) => {
+    setSummarizing(true);
+    setActiveNoteId(note._id);
+    setSummary(null);
+    try {
+      const result = await summarizeNote(note._id);
+      setSummary(result.data.summary);
+    } catch (err) {
+      setSummary(
+        err.response?.data?.message || "Summary generate nahi ho sake",
+      );
+    } finally {
+      setSummarizing(false);
     }
   };
 
@@ -203,6 +228,15 @@ export default function Notes() {
                   >
                     ❤️ Like
                   </button>
+                  <button
+                    onClick={() => handleSummarize(note)}
+                    className={styles.aiBtn}
+                    disabled={summarizing && activeNoteId === note._id}
+                  >
+                    {summarizing && activeNoteId === note._id
+                      ? "⏳..."
+                      : "🤖 AI Summary"}
+                  </button>
                   {note.uploadedBy?._id === user?.id && (
                     <button
                       onClick={() => handleDelete(note._id)}
@@ -215,6 +249,25 @@ export default function Notes() {
               </div>
             ))
           )}
+        </div>
+      )}
+
+      {summary && (
+        <div className={styles.summaryModal}>
+          <div className={styles.summaryCard}>
+            <div className={styles.summaryHeader}>
+              <h3>🤖 AI Summary</h3>
+              <button
+                onClick={() => setSummary(null)}
+                className={styles.closeBtn}
+              >
+                ✕
+              </button>
+            </div>
+            <div className={styles.summaryContent}>
+              <p>{summary}</p>
+            </div>
+          </div>
         </div>
       )}
     </div>

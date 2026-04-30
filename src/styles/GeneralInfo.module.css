@@ -126,17 +126,17 @@
   font-size: 12px;
   margin-top: 12px;
 }
-# Frontend
+/* # Frontend
 cd ~/Desktop/campushive
 git init
 git add .
 git commit -m "feat: complete frontend - all pages done"
 git branch -M main
-git remote add origin https://github.com/TERA_USERNAME/campushive.git
+git remote add origin https://github.com/Its-VD/campushive.git
 git push -u origin main
 
 # Backend
 cd ~/Desktop/campushive-backend
 git add .
 git commit -m "chore: minor updates"
-git push origin main
+git push origin main */

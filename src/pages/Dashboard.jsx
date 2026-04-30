@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { getNotes } from "../services/api";
+import { getNotes, getQuote } from "../services/api";
 import styles from "../styles/Dashboard.module.css";
 
 export default function Dashboard() {
@@ -9,7 +9,22 @@ export default function Dashboard() {
   const navigate = useNavigate();
   const [streak, setStreak] = useState(0);
   const [notesCount, setNotesCount] = useState(0);
+  const [quote, setQuote] = useState("");
+  const [loadingQuote, setLoadingQuote] = useState(true);
+  useEffect(() => {
+    const fetchQuote = async () => {
+      try {
+        const res = await getQuote();
+        setQuote(res.data.quote);
+      } catch {
+        setQuote("Aaj kuch naya seekhne ka din hai 🚀");
+      } finally {
+        setLoadingQuote(false);
+      }
+    };
 
+    fetchQuote();
+  }, []);
   useEffect(() => {
     // Streak logic
     const today = new Date().toDateString();
@@ -53,9 +68,9 @@ export default function Dashboard() {
       color: "#f5a623",
     },
     {
-      title: "Subject Chat",
+      title: "Branch Chat",
       icon: "💬",
-      desc: "Apne subject ke saath chat karo",
+      desc: "Apne Branch ke saath chat karo",
       path: "/chat/subject",
       color: "#3b82f6",
     },
@@ -116,7 +131,6 @@ export default function Dashboard() {
           </button>
         </div>
       </nav>
-
       <div className={styles.banner}>
         <div>
           <h2>Welcome back, {user?.name?.split(" ")[0]}! 👋</h2>
@@ -127,7 +141,6 @@ export default function Dashboard() {
         </div>
         <div className={styles.bannerBadge}>🎓 Student</div>
       </div>
-
       {/* Stats Row */}
       <div className={styles.statsRow}>
         {stats.map((s) => (
@@ -138,7 +151,6 @@ export default function Dashboard() {
           </div>
         ))}
       </div>
-
       {/* Modules */}
       <h3 className={styles.sectionTitle}>Modules</h3>
       <div className={styles.grid}>
@@ -156,25 +168,30 @@ export default function Dashboard() {
           </div>
         ))}
       </div>
-
+      {user?.role === "admin" && (
+        <div style={{ padding: "0 32px", marginTop: "8px" }}>
+          <button
+            onClick={() => navigate("/admin")}
+            style={{
+              background: "#1a0a2e",
+              border: "1px solid #a855f7",
+              color: "#a855f7",
+              padding: "12px 24px",
+              borderRadius: "10px",
+              fontSize: "14px",
+              fontWeight: "700",
+            }}
+          >
+            🛡️ Admin Panel
+          </button>
+        </div>
+      )}
       {/* Quick Actions */}
-      <h3 className={styles.sectionTitle}>Quick Actions</h3>
-      <div className={styles.quickActions}>
-        <button onClick={() => navigate("/notes")} className={styles.qaBtn}>
-          📤 Note Upload karo
-        </button>
-        <button onClick={() => navigate("/ai")} className={styles.qaBtn}>
-          🤖 AI se poochho
-        </button>
-        <button
-          onClick={() => navigate("/chat/general")}
-          className={styles.qaBtn}
-        >
-          💬 General Chat
-        </button>
-        <button onClick={() => navigate("/info")} className={styles.qaBtn}>
-          📢 Latest Notices
-        </button>
+      <h6>
+        <i>fire</i>
+      </h6>
+      <div className={styles.quoteBox}>
+        {loadingQuote ? <p>Generating quote...</p> : <p>✨ {quote}</p>}
       </div>
     </div>
   );

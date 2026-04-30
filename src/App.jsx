@@ -11,6 +11,9 @@ import SubjectChat from "./pages/SubjectChat.jsx";
 import GeneralChat from "./pages/GeneralChat.jsx";
 import GeneralInfo from "./pages/GeneralInfo.jsx";
 import AIAssistant from "./pages/AIAssistant.jsx";
+import AdminPanel from "./pages/AdminPanel.jsx";
+
+// Protected routes mein:
 
 export default function App() {
   return (
@@ -23,6 +26,7 @@ export default function App() {
           <Route path="/verify-otp" element={<OTPVerify />} />
 
           <Route element={<ProtectedRoute />}>
+            <Route path="/admin" element={<AdminPanel />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/notes" element={<Notes />} />
             <Route path="/chat/subject" element={<SubjectChat />} />

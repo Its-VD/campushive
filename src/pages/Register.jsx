@@ -40,10 +40,10 @@ export default function Register() {
     e.preventDefault();
     setError("");
 
-    if (!form.email.endsWith("@nitkkr.ac.in")) {
-      setError("Sirf @nitkkr.ac.in email allowed hai");
-      return;
-    }
+    // if (!form.email.endsWith("@nitkkr.ac.in")) {
+    //   setError("Sirf @nitkkr.ac.in email allowed hai");
+    //   return;
+    // }
 
     if (form.password.length < 6) {
       setError("Password kam se kam 6 characters ka hona chahiye");

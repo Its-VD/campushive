@@ -63,7 +63,7 @@ export default function SubjectChat() {
           ← Back
         </button>
         <div className={styles.roomInfo}>
-          <h2>💬 Subject Chat</h2>
+          <h2>💬 Branch Chat</h2>
           <span>
             {user?.degree} • Sem {user?.semester} • {user?.branch}
           </span>

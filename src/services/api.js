@@ -35,8 +35,7 @@ export const getInfoPosts = (params) => API.get("/info", { params });
 
 // AI
 export const aiChat = (data) => API.post("/ai/chat", data);
-export const summarizeNote = (id, data) =>
-  API.post(`/ai/summarize/${id}`, data);
+export const summarizeNote = (id) => API.post(`/ai/summarize/${id}`);
 export const askQuestion = (data) => API.post("/ai/ask", data);
-
+export const getQuote = () => API.get("/ai/quote");
 export default API;
